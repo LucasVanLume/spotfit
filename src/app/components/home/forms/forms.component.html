@@ -1,0 +1,58 @@
+<form class="form-group" [formGroup]="formGroup">
+    <div class="form-icon">
+        <img src="/assets/images/png/icon-hour.png" />
+        Horário
+    </div>
+    <h3>Escolha o horário para treinar</h3>
+    <mat-radio-group formControlName="hour">
+        <mat-divider></mat-divider>
+        <div class="radio-wrapper">
+            <mat-radio-button value="morning">Manhã</mat-radio-button>
+            <span>06:00 ás 12h</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="radio-wrapper">
+            <mat-radio-button value="afternoon">Tarde</mat-radio-button>
+            <span>12:01 ás 18h</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="radio-wrapper">
+            <mat-radio-button value="night">Noite</mat-radio-button>
+            <span>18:01 ás 23h</span>
+        </div>
+        <mat-divider></mat-divider>
+    </mat-radio-group>
+
+    <h3>Personalize sua busca</h3>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>filter_alt</mat-icon>
+                    Filtros adicionais
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!-- Regras -->
+            <section class="rules-wrapper">
+                <H4>Comodidades</H4>
+                <p>Selecione as comodidades que deseja</p>
+                <div class="toggle-wrapper">
+                    <mat-slide-toggle formControlName="hasTowel">Possui de toalha</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="hasFountain">Possui bebedouro</mat-slide-toggle>
+                    <mat-slide-toggle formControlName="hasLocker">Possui vestiário</mat-slide-toggle>
+                </div>
+                <mat-divider></mat-divider>
+            </section>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <div class="checkbox-wrapper">
+        <mat-slide-toggle name="showClosed" formControlName="showClosed">Exibir unidades fechadas</mat-slide-toggle>
+        <span>Resultados encontrados: {{ results.length }}</span>
+    </div>
+    <div class="btn-wrapper">
+        <button mat-flat-button class="btn btn-primary" (click)="onClean()">Encontrar unidade</button>
+        <button mat-flat-button class="btn btn-secondary" (click)="onClean()">Limpar</button>
+    </div>
+</form>
