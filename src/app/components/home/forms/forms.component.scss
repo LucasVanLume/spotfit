@@ -74,6 +74,10 @@
     color: var(--yellow);
   }
 
+  .form-group .expansion-divider {
+    margin: 14px 0;
+  }
+
   .form-group .rules-wrapper {
     padding: 16px;
     background-color: #f9f9f9;
@@ -102,15 +106,31 @@
     .rules-toggle {
         margin: 8px;
     }
+  }
 
-    .rules-divider {
-        margin: 14px 0;
+  .form-group .address-wrapper {
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin: 16px 0;
+
+    .address-title {
+        font-size: 20px;
+        color: var(--medium-text);
+        margin-bottom: 8px;
+    }
+
+    .address-description {
+        font-size: 14px;
+        color: var(--light-gray);
+        margin-bottom: 16px;
     }
   }
 
   .form-group .checkbox-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: 100%;
 
@@ -165,6 +185,14 @@
     }
 
     .form-group .rules-wrapper .toggle-wrapper {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+
+    .form-group .rules-wrapper .address-wrapper {
       display: flex;
       width: 100%;
       align-items: center;

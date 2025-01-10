@@ -42,7 +42,25 @@
                     <mat-slide-toggle class="rules-toggle" formControlName="hasFountain">Possui bebedouro</mat-slide-toggle>
                     <mat-slide-toggle class="rules-toggle" formControlName="hasLocker">Possui vestiário</mat-slide-toggle>
                 </div>
-                <mat-divider class="rules-divider"></mat-divider>
+                <mat-divider class="expansion-divider"></mat-divider>
+            </section>
+
+            <!-- Endereço -->
+            <section class="address-wrapper">
+                <H4 class="address-title">Localização</H4>
+                <p class="address-description">Selecione a localização que deseja</p>
+                <div class="address-wrapper">
+                    <mat-form-field class="address-field">
+                        <mat-label>UF</mat-label>
+                        <input type="text" matInput formControlName="uf" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.name}}
+                          </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <mat-divider class="expansion-divider"></mat-divider>
             </section>
         </mat-expansion-panel>
     </mat-accordion>
@@ -52,7 +70,7 @@
         <span>Resultados encontrados: {{ results.length }}</span>
     </div>
     <div class="btn-wrapper">
-        <button mat-flat-button class="btn btn-primary" (click)="onClean()">Encontrar unidade</button>
+        <button mat-flat-button class="btn btn-primary" (click)="onSubmit()">Encontrar unidade</button>
         <button mat-flat-button class="btn btn-secondary" (click)="onClean()">Limpar</button>
     </div>
 </form>
