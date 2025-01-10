@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { GetLocationsService } from 'src/app/services/get-locations.service';
+import { Location } from 'src/app/interfaces/location.interface';
 
 export interface Uf {
   name: string;
@@ -12,15 +14,20 @@ export interface Uf {
   styleUrls: ['./forms.component.scss'],
 })
 export class FormsComponent {
-  results = [];
+  results: Location[] = [];
   formGroup!: FormGroup;
 
   options: Uf[] = [{name: 'PE'}, {name: 'SP'}, {name: 'RJ'}];
   filteredOptions!: Observable<Uf[]>;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private getLocationsService: GetLocationsService) { }
 
   ngOnInit() {
+    this.getLocationsService.getAllLocations().subscribe(data => {
+      this.results = data.locations;
+      console.log(data);
+    });
+
     this.formGroup = this.formBuilder.group({
       hour: '',
       showClosed: false,
